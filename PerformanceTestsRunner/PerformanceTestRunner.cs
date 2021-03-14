@@ -28,25 +28,18 @@ public static class PerformanceTestRunner
 		return new Tuple<long, long>(_stopwatch.ElapsedMilliseconds, memoryDiff);
 	}
 
-	public static void run<T>(string message = null)
-			where T : class, IPerformanceTest, new()
+	public static void Log(string message = null)
 	{
-		if (message != null)
-		{
-			Console.WriteLine(message);
-			return;
-		}
-
-		if (typeof(T) == typeof(EmptyTest))
-		{
-			Console.WriteLine(string.Empty);
-			return;
-		}
-
-		run(()=>new T());
+		Console.WriteLine(message ?? String.Empty);
 	}
 
-	public static void run<T>(Func<T> testFactory)
+	public static void Run<T>()
+			where T : class, IPerformanceTest, new()
+	{
+		Run(()=>new T());
+	}
+
+	public static void Run<T>(Func<T> testFactory)
 			where T : class, IPerformanceTest
 	{
 		Thread.Sleep(200);//(500);

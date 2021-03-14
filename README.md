@@ -16,17 +16,17 @@ class MainClass
     {
         MemoryHelper.MemoryBegin(  );
 
-        R.run<EmptyTest>("Running performance tests...");
+        R.Log("Running performance tests...");
 
-        R.run<EmptyTest>("\nMain tests");
-        R.run<Test1>();
-        R.run<Test2>();
-        R.run( ()=> new TestWithArgs(5,100) );
+        R.Log("\nMain tests");
+        R.Run<Test1>();
+        R.Run<Test2>();
+        R.Run( ()=> new TestWithArgs(5,100) );
 
-        R.run<EmptyTest>();
-        R.run<EmptyTest>("Other");
-        R.run<TestOther1>();
-        R.run<TestOther2>();
+        R.Log();
+        R.Log("Other");
+        R.Run<TestOther1>();
+        R.Run<TestOther2>();
 
         MemoryHelper.MemoryEnd(  );
     }
