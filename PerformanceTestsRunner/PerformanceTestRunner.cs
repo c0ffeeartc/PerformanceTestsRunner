@@ -61,7 +61,7 @@ public static class PerformanceTestRunner
 
 	public static string ToTestStringDefault (this IPerformanceTest self)
 	{
-		return self.GetType().ToString();
+		return self.GetType().Name;
 	}
 }
 }
